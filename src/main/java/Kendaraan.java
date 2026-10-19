@@ -1,7 +1,8 @@
-public class Kendaraan {
+public abstract class Kendaraan {
     private String nomorPlat;
     private String merk;
     private int jamMasuk;
+
     private static int totalKendaraanMasuk = 0;
 
     public Kendaraan(String nomorPlat, String merk, int jamMasuk) {
@@ -11,21 +12,39 @@ public class Kendaraan {
         totalKendaraanMasuk++;
     }
 
-    public String getNomorPlat() { return nomorPlat; }
-    public void setNomorPlat(String nomorPlat) { this.nomorPlat = nomorPlat; }
-    public String getMerk() { return merk; }
-    public void setMerk(String merk) { this.merk = merk; }
-    public int getJamMasuk() { return jamMasuk; }
-    public void setJamMasuk(int jamMasuk) {
-        if (jamMasuk >= 0 && jamMasuk <= 24) {
-            this.jamMasuk = jamMasuk;
-        } else {
-            System.out.println("Jam masuk tidak valid! Harus antara 0 - 24.");
-        }
+    public String getNomorPlat() {
+        return nomorPlat;
     }
-    public static int getTotalKendaraanMasuk() { return totalKendaraanMasuk; }
+
+    public void setNomorPlat(String nomorPlat) {
+        this.nomorPlat = nomorPlat;
+    }
+
+    public String getMerk() {
+        return merk;
+    }
+
+    public void setMerk(String merk) {
+        this.merk = merk;
+    }
+
+    public int getJamMasuk() {
+        return jamMasuk;
+    }
+
+    public void setJamMasuk(int jamMasuk) {
+        this.jamMasuk = jamMasuk;
+    }
+
+    public static int getTotalKendaraanMasuk() {
+        return totalKendaraanMasuk;
+    }
+
+    public abstract double hitungBiayaParkir(int lamaParkir);
 
     public void tampilkanInfo() {
-        System.out.printf("Plat: %-10s | Merk: %-10s | Masuk Pukul: %02d:00 WIB%n", nomorPlat, merk, jamMasuk);
+        System.out.println("Plat: " + nomorPlat
+                + " | Merk: " + merk
+                + " | Jam masuk: " + jamMasuk + ":00");
     }
 }
